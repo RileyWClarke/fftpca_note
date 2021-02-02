@@ -13,7 +13,7 @@ Original file is located at
 # %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-
+import fftpca_config
 
 #Potentially useful astropy stuff
 import astropy
@@ -45,11 +45,10 @@ from ipywidgets import interact
 #Making Figures look nice
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.size'] = 12
+print(npca)
 
-from google.colab import drive
-drive.mount("/content/gdrive")
 
-!pip install LightKurve
+#pip install LightKurve
 
 """## Reading in Data
 
