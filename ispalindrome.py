@@ -1,13 +1,19 @@
 import sys
-print("He","llo", sys.argv[1])
 
-import pylab as pl
+def reverse(s):
+    rs = ""
+    for i in range(1,len(s)+1):
+        rs += s[-i]
+    return rs
 
+for arg in sys.argv[1:]:
 
+    if len(arg) == 1:
+        print("{} is only one letter long!".format(arg))
 
-pl.plot(list(range(10)))
-pl.figure()
-pl.plot(list(range(20)))
-pl.savefig("test.png")
-pl.show()
+    elif arg == reverse(arg):
+        print("{} is a palindrome!".format(arg))
+
+    else:
+        print("{} is not a palindrome!".format(arg))
 
