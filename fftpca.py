@@ -45,7 +45,7 @@ from ipywidgets import interact
 #Making Figures look nice
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.size'] = 12
-print(npca)
+
 
 
 #pip install LightKurve
@@ -57,8 +57,8 @@ print(npca)
 
 # read data
 
-data1=np.loadtxt('/content/gdrive/My Drive/BiancoGroup/phot211046195r2_ssc.2m0335.dat')
-data2=np.loadtxt('/content/gdrive/My Drive/BiancoGroup/phot210327027r2_ssc.2m0355.dat')
+data1=np.loadtxt('Data/phot211046195r2_ssc.2m0335.dat')
+data2=np.loadtxt('Data/phot210327027r2_ssc.2m0355.dat')
 
 time1,flux1,xx1,yy1=data1[:,0],data1[:,1],data1[:,2],data1[:,3]
 time2,flux2,xx1,yy2=data2[:,0],data2[:,1],data2[:,2],data2[:,3]
@@ -67,19 +67,19 @@ plt.plot(time1,flux1, c='k')
 plt.xlabel('BJD - 2454833 (days)')
 plt.ylabel('Flux (e/s)')
 plt.title('EPIC 211046195')
-plt.savefig('toi1.png', dpi=100, bbox_inches='tight')
+plt.savefig('Figures/toi1.png', dpi=100, bbox_inches='tight')
 
 plt.plot(time2,flux2, c='k')
 plt.xlabel('BJD - 2454833 (days)')
 plt.ylabel('Flux (e/s)')
 plt.title('EPIC 210327027')
-plt.savefig('toi2.png', dpi=100, bbox_inches='tight')
+plt.savefig('Figures/toi2.png', dpi=100, bbox_inches='tight')
 
 """### Long Cadence Data"""
 
-bjds = np.load('gdrive/My Drive/BiancoGroup/bjds.npy')
-fluxes = np.load('gdrive/My Drive/BiancoGroup/fluxes.npy')
-fluxerrs = np.load('gdrive/My Drive/BiancoGroup/fluxerrs.npy')
+bjds = np.load('Data/bjds.npy')
+fluxes = np.load('Data/fluxes.npy')
+fluxerrs = np.load('Data/fluxerrs.npy')
 
 fig, axes = plt.subplots(9, figsize=(10,45))
 p = 0
@@ -291,7 +291,7 @@ fig = plt.figure(figsize=(10,5))
   axres.set_xlim(time1[0], 2265)
   #axres.set_ylim(-0.5,0.5)
 
-plt.savefig('resids.png', dpi=100, bbox_inches='tight');
+plt.savefig('Figures/resids.png', dpi=100, bbox_inches='tight');
 
 s = pd.Series(Filtered_signal1)
 window=1000
@@ -427,7 +427,7 @@ subax2.get_xaxis().set_ticks([])
 subax2.get_yaxis().set_ticks([]);
 
 
-plt.savefig('4plot.png', dpi=100, bbox_inches='tight')
+plt.savefig('Figures/4plot.png', dpi=100, bbox_inches='tight')
 
 fig, ax = plt.subplots(1,2, figsize=(10,5))
 
@@ -453,7 +453,7 @@ subax1.tick_params(axis='both', labelsize=8)
 
 
 
-plt.savefig('2plot.png', dpi=100, bbox_inches='tight')
+plt.savefig('Figures/2plot.png', dpi=100, bbox_inches='tight')
 
 """# PCA with Spectra"""
 
@@ -505,7 +505,8 @@ for i in range(5):
 axes[0].arrow(4.09, 100, 0, -40, width=0.2, head_length=5, color='red')
 plt.xlabel('Frequency (1/day)')
 plt.subplots_adjust(hspace=0)
-plt.savefig('pspcs.png', dpi=100, bbox_inches='tight')
+plt.savefig('Figures/pspcs.png', dpi=100, bbox_inches='tight')
+plt.show()
 
 frequency[5:][np.where(pca_df[0][5:] == pca_df[0][75:].max())[0]]
 
@@ -515,7 +516,8 @@ plt.plot(a, np.full(len(x[0]),0.95),'k--')
 plt.xlabel('number of components')
 plt.ylabel('cumulative explained variance')
 plt.title('PS Explained Var')
-plt.savefig('expvar.png', bbox_inches='tight')
+plt.savefig('Figures/expvar.png', bbox_inches='tight')
+plt.show()
 
 """## Method 1: Removing First 2 Components entirely"""
 
