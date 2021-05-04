@@ -1,5 +1,5 @@
 # Detection \& Removal of Periodic Noise in Kepler/K2 Photometry with Principle Component Analysis
 
-##Abstract
+## Abstract
 
 We present a novel method for detrending systematic noise from time series data using Principal ComponentAnalysis (PCA) in Fast Fourier Transforms (FFT). This method is demonstrated on time series data obtained from the inaugural campaign of theKeplerK2 mission, as well as three objects of interest from Campaign 4.Unlike previous detrending techniques that utilize PCA, this method performs the detrending in Fourier space rather than temporal space. The advantage of performing the analysis is that the technique is sensitive purely to the frequency of the unwanted signal and not to other morphological features. This method could improve measurements of low signal-to-noise photometric features by reducing surrounding noise.  We also discuss challenges and limitations associated with this technique
