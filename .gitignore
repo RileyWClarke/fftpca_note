@@ -1,4 +1,23 @@
-*~
-#*
+# IDEs
+.vscode/
+.idea/
+
+# Intermediate Coverage file
+.coverage
+
+# Python runtime
 *.pyc
-.*
+*.egg-info
+.pytest_cache
+
+# Virtual environments
+venv/
+.venv/
+
+#Jupyter checkpoints
+.ipynb_checkpoints
+.DS_Store
+**/.DS_Store
+
+#Large files
+Data/selection/
