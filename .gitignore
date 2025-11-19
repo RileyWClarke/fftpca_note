@@ -20,4 +20,4 @@ venv/
 **/.DS_Store
 
 #Large files
-Data/selection/
+Data/ztf_crm/
