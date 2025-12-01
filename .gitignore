@@ -20,4 +20,4 @@ venv/
 **/.DS_Store
 
 #Large files
-Data/ztf_crm/
+Data/ztf_crm/lightcurve*
