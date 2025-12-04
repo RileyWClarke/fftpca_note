@@ -7,7 +7,7 @@ e.g.
 foo@bar:~$ python3 \path\to\data \path\to\destination
 ```
 
-Add plots to enable plotting
+Add 'plots' at the end to display plots
 e.g
 
 ```console
