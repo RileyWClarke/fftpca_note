@@ -10,11 +10,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils import bandpass_ifft, pc_thr, hrm_gfilter, pc_filt
+from config import ROOTDIR
 
 PLOTS = False
-
-# Check if optional 'plots' argument is provided
-if len(argv) > 3 and argv[3] == 'plots':
+if len(argv) > 4 and argv[4] == 'plots':
     PLOTS = True
 
 plt.rcParams['font.family'] = 'sans-serif'
@@ -32,7 +31,7 @@ pspectra = []
 
 for i, flux in enumerate(fluxes):
     lco, hco = 4, 6
-    sample_rate = 300 #Hz
+    sample_rate = float(argv[3])
     Spectrum, frequency, Filtered_spectrum, Filtered_signal, Low_freq, High_freq = bandpass_ifft(flux=flux, low_cutoff=lco, high_cutoff=hco, sample=1./sample_rate, gf_sig = 1, Filter='Gaussian')
 
     dfts.append(Spectrum)
@@ -64,14 +63,14 @@ if PLOTS:
   plt.xlabel('Component #')
   plt.title('Distribution of Principal Component Coefficients')
   plt.xlim(0.5,5.5)
-  plt.savefig('Figures/ztfcrm_box.png', dpi=100, bbox_inches='tight')
+  plt.savefig(ROOTDIR + 'Figures/ztfcrm_box.png', dpi=100, bbox_inches='tight')
   plt.show()
 
   plt.plot(frequency[1:], pca_df.iloc[:,0])
   plt.vlines(frequency[41:][np.argmax(pca_df.iloc[40:,0])], 0, 30, color='k', ls='--')
   plt.title('PC1')
   plt.xlabel('Frequency (Hz)')
-  plt.savefig('Figures/ztfcrm_pc1.png', dpi=100, bbox_inches='tight')
+  plt.savefig(ROOTDIR + 'Figures/ztfcrm_pc1.png', dpi=100, bbox_inches='tight')
   plt.show()
 
 
@@ -80,7 +79,7 @@ print(f'DFT Peak at {peakf:.3f} Hz')
 
 d = {'pc1':pca.components_[0],'pc2':pca.components_[1],'pc3':pca.components_[2],'pc4':pca.components_[3],'pc5':pca.components_[4]}
 coeff_df = pd.DataFrame(data=d)
-coeff_df.to_csv('Data/ztf_crm/ztfcrm_coeffs.csv')
+coeff_df.to_csv(ROOTDIR + 'Data/ztf_crm/ztfcrm_coeffs.csv')
 
 dft_dict = {}
 
