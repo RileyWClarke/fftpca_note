@@ -1,15 +1,15 @@
 # Instructions for ztfcrm.py script
 
-Args: [Input file] [path to output destination]
+Args: [path to input file] [path to output destination] [data sampling rate in Hz]
 e.g.
 
 ```console
-foo@bar:~$ python3 \path\to\data \path\to\destination
+foo@bar:~$ python3 \path\to\data \path\to\destination 300
 ```
 
-Add 'plots' at the end to display plots
+Add 'plots' at the end to display plots of coefficient distributions and 1st PC
 e.g
 
 ```console
-foo@bar:~$ python3 \path\to\data \path\to\destination plots
+foo@bar:~$ python3 \path\to\data \path\to\destination 300 plots
 ```
